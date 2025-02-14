@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Clics Sécurisé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Compteur de Clics Sécurisé</h1>
+        <p>Clics enregistrés : <span id="clickCount">0</span></p>
+        <button id="clickButton">Cliquez ici !</button>
+    </div>
+
+    <script>
+        const clickButton = document.getElementById('clickButton');
+        const clickCountElement = document.getElementById('clickCount');
+
+        // Fonction pour récupérer le nombre de clics
+        function fetchClickCount() {
+            fetch('/get-clicks', {
+                method: 'GET',
+                headers: {
+                    'x-secret': 'monSuperSecret'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                clickCountElement.textContent = data.clicks;
+            })
+            .catch(err => console.log('Erreur lors de la récupération des clics :', err));
+        }
+
+        // Lorsque l'on clique sur le bouton, on enregistre le clic
+        clickButton.addEventListener('click', () => {
+            fetch('/record-click', { method: 'POST' })
+                .then(() => fetchClickCount());
+        });
+
+        // Initialisation des clics
+        fetchClickCount();
+    </script>
+</body>
+</html>

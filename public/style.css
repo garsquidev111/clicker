@@ -1,0 +1,113 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #f7b42c, #fc575e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+/* Conteneur principal */
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+/* Titre */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Compteur de clics */
+p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+#clickCount {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+/* Bouton */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Animation de chargement */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#clickCount {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Média Queries pour les petits écrans */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #clickCount {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
